@@ -95,7 +95,7 @@ class DropdownScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 16.0),
                           DropdownButton<String>(
-                            hint: Text('Select Item 3'),
+                            hint: const Text('Select Item 3'),
                             value: dropdownProvider
                                 .dropdownSets[index].dropdownValue3,
                             onChanged: (String? newValue) {

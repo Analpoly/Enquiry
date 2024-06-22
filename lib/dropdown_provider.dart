@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -72,12 +73,14 @@ class DropdownProvider with ChangeNotifier {
         throw Exception('Failed to load categories, status code: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error: $e');
+      if (kDebugMode) {
+        print('Error: $e');
+      }
     }
   }
 
   Future<void> fetchSubItems(int categoryId, int setIndex) async {
-  final String url = 'https://suncity.warmonks.com/api/prdtcat';
+  const String url = 'https://suncity.warmonks.com/api/prdtcat';
 
   try {
     final response = await http.post(
@@ -108,17 +111,21 @@ class DropdownProvider with ChangeNotifier {
         throw Exception('Invalid subcategories data: ${data['data']}');
       }
     } else {
-      print('Response body: ${response.body}');
+      if (kDebugMode) {
+        print('Response body: ${response.body}');
+      }
       throw Exception('Failed to load sub-items, status code: ${response.statusCode}');
     }
   } catch (e) {
-    print('Error: $e');
+    if (kDebugMode) {
+      print('Error: $e');
+    }
   }
 }
 
 
   Future<void> fetchBrands(int subcategoryId, int setIndex) async {
-    final String url = 'https://suncity.warmonks.com/api/brdcat';
+    const String url = 'https://suncity.warmonks.com/api/brdcat';
 
     try {
       final response = await http.post(
@@ -145,7 +152,9 @@ class DropdownProvider with ChangeNotifier {
         throw Exception('Failed to load brands, status code: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching brands: $e');
+      if (kDebugMode) {
+        print('Error fetching brands: $e');
+      }
     }
   }
 

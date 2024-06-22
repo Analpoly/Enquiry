@@ -111,7 +111,7 @@ class DropdownScreen extends StatelessWidget {
                               );
                             }).toList(),
                           ),
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                         ],
                       );
                     },
